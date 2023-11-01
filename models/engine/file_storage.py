@@ -18,7 +18,8 @@ class FileStorage:
 
     def new(self, obj):
         """ sets obj in __objects with key/value pair """
-        self.__objects = {obj.id: obj}
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        self.__objects[key] = obj
 
     
     def save(self):
@@ -30,7 +31,7 @@ class FileStorage:
             json.dump(full_dict, file, indent= 4)
 
     def reload(self):
-        """  """
+        """ reload method """
         try:
             with open(self.__file_path, "r", encoding="UTF-8") as file:
                 temp_reload = json.load(file)
