@@ -24,11 +24,22 @@ class FileStorage:
 
     """ serializes __objects to the JSON file """
     def save(self):
+        full_dict = {}
         with open(self.__file_path, "w", encoding="UTF-8") as file:
-            file.write(json.dumps(self.__objects))
+
+            for index in self.__objects.keys():
+                temp = (self.__objects[index]).to_json()
+                full_dict[index] = temp
+            file.write(json.dumps(full_dict))
 
     """ deserializes the JSON file to __objects """
     def reload(self):
-        if os.path.isfile(self.__file_path):
-            with open(self.__file_path, encoding="UTF-8") as file:
-                return json.load(file)
+        try:
+            if os.path.isfile(self.__file_path):
+                with open(self.__file_path, "r", encoding="UTF-8") as file:
+                    temp_reload = (json.load(file))
+                    for index in temp_reload.keys():
+                        self.__objects[index] = dict(temp_reload[index]) #need to somehow convert 
+                        return(self.__objects)
+        except Exception as e:
+            print (e)
