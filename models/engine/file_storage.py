@@ -12,16 +12,17 @@ class FileStorage:
     __file_path = "./file.json"
     __objects = {}
 
-    """ defines __objects """
     def all(self):
+        """ defines __objects """
         return self.__objects
 
-    """ sets obj in __objects with key/value pair """
     def new(self, obj):
+        """ sets obj in __objects with key/value pair """
         self.__objects = {obj.id: obj}
 
-    """ serializes __objects to the JSON file """
+    
     def save(self):
+        """ serializes __objects to the JSON file """
         full_dict = {}
         for keys, value in self.__objects.items():
             full_dict[keys] = value.to_dict()
@@ -29,9 +30,10 @@ class FileStorage:
             json.dump(full_dict, file, indent= 4)
 
     def reload(self):
+        """  """
         try:
             with open(self.__file_path, "r", encoding="UTF-8") as file:
-                temp_reload = (json.load(file))
+                temp_reload = json.load(file)
                 for keys, value in temp_reload.items(): 
                     class_name, obj_id = keys.split(".")
                     instance = eval(class_name)(**value)
