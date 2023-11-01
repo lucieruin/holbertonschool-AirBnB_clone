@@ -2,7 +2,7 @@
 """ Module for serializing and deserializing instances and JSON files """
 
 
-import os
+from models.base_model import BaseModel
 import json
 
 
@@ -27,13 +27,13 @@ class FileStorage:
         full_dict = {}
         for keys, value in self.__objects.items():
             full_dict[keys] = value.to_dict()
-        with open(self.__file_path, "w", encoding="UTF-8") as file:
-            json.dump(full_dict, file, indent= 4)
+        with open(self.__file_path, "w", encoding="utf-8") as file:
+            json.dump(full_dict, file, indent=4)
 
     def reload(self):
         """ reload method """
         try:
-            with open(self.__file_path, "r", encoding="UTF-8") as file:
+            with open(self.__file_path, "r", encoding="utf-8") as file:
                 temp_reload = json.load(file)
                 for keys, value in temp_reload.items(): 
                     class_name, obj_id = keys.split(".")
