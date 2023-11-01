@@ -3,13 +3,14 @@
 
 from uuid import uuid4
 from datetime import datetime
+from models import storage
 
 
 class BaseModel():
     """ common attributes & methods """
     def __init__(self, *args, **kwargs):
         """ initialization method """
-        if kwargs :
+        if kwargs:
             for key, mydate in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     mydate = datetime.strptime(mydate, "%Y-%m-%dT%H:%M:%S.%f")
@@ -29,6 +30,7 @@ class BaseModel():
     def save(self):
         """ update the public instance attribute """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         dictionary = self.__dict__.copy()
