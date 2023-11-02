@@ -9,6 +9,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def emptyline(self):
+        """ define empty line """
         return False
 
     def do_EOF(self, line):
@@ -16,6 +17,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
+        """ quit the program """
         return True
 
 
