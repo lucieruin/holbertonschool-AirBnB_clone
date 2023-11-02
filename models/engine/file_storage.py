@@ -9,7 +9,7 @@ import json
 class FileStorage:
     """ defines FileStorage class """
 
-    __file_path = "./file.json"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -31,7 +31,7 @@ class FileStorage:
             json.dump(full_dict, file, indent=4)
 
     def reload(self):
-        """ reload method """
+        """ method loads data from a specified JSON file """
         try:
             with open(self.__file_path, "r", encoding="utf-8") as file:
                 temp_reload = json.load(file)

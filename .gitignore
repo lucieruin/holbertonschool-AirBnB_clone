@@ -1,0 +1,17 @@
+# Settings VS
+.vscode/settings.json
+
+# Pyc
+models/__pycache__
+tests/test_models/__pycache__
+models/engine/__pycache__
+tests/__pycache__
+tests/test_models/test_engine/__pycache__
+
+
+# Json files
+*.json
+
+# file test
+test_save_reload_base_model.py
+main.py
