@@ -10,3 +10,7 @@ from models.base_model import BaseModel
 """ creates storage and reloads """
 storage = FileStorage()
 storage.reload()
+
+classes = [
+    "BaseModel"
+]
