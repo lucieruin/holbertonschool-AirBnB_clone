@@ -3,7 +3,7 @@
 import cmd
 import models
 import shlex
-from models.user import User
+import json
 
 
 class HBNBCommand(cmd.Cmd):
