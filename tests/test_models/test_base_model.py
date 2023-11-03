@@ -22,7 +22,7 @@ class testBaseModel(unittest.TestCase):
 
     def test_save(self):
         """ test save """
-        first_updated_at = self.model.updated_at
+        first_updated_at = self.model.updated_atsq
         self.model.save()
         self.assertNotEqual(first_updated_at, self.model.updated_at)
         os.remove('file.json')
