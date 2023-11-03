@@ -1,16 +1,16 @@
-#!/usr/bin/python
-""" test for user class"""
+#!/usr/bin/python3
+""" Unittest for User """
 
 import unittest
-from models.user import User
 from models.base_model import BaseModel
+from models.user import User
 
 
-class TestUser(unittest.TestCase):
-    """ Test class User """
+class testUser(unittest.TestCase):
+    """ Test class for User """
 
-    def classTest(self):
-        """" valid attibute type """
+    def test_class(self):
+        """ Validate attributes type """
         with self.subTest(msg='Inheritance'):
             self.assertTrue(issubclass(User, BaseModel))
 
